@@ -1,0 +1,7 @@
+table, th, td {
+  border: 1px solid black;
+}
+
+.tableSize{
+  font-size: 20px !important;
+}

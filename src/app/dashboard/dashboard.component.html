@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <form class="form-inline md-form mr-auto mb-4" name="weather" #weather="ngForm" novalidate>        
+        <div class="jumbotron text-center">
+            <div class="row">
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4">
+                    <h1>Weather App</h1>
+                    <div class="input-group">
+                        <input class="form-control mr-sm-2" type="text" name="city" placeholder="Enter City Name" [(ngModel)]="city" required>
+                        <button mdbBtn size="sm" gradient="aqua" rounded="true" class="my-0 waves-light" mdbWavesEffect type="submit"[disabled]="!weather.form.valid" (click)="getWeatherReportByCity()">Search</button>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                </div>
+            </div>
+        </div>
+          
+
+        <div *ngIf="showTable" class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn" (click)="setFavouriteLoction()">Mark As Favouirte</button>
+                    <h3>Current Weather</h3>
+
+                    <table mdbTable>
+                        <thead>
+                          <tr>
+                            <th>Temp</th>
+                            <th>TempMax</th>
+                            <th>TempMin</th>
+                            <th>Cloudiness</th>
+                            <th>Pressure</th>
+                            <th>Humidity</th>                            
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr mdbTableCol>
+                            <td>{{ (main.temp-273.15) | number : '1.2-2'}} &deg;C</td>
+                            <td>{{ (main.temp_max-273.15) | number : '1.2-2'}} &deg;C</td>
+                            <td>{{ (main.temp_min-273.15) | number : '1.2-2'}} &deg;C</td>
+                            <td>{{ cloudiness | titlecase}}</td>
+                            <td>{{ main.pressure}} Pascal</td>
+                            <td>{{ main.humidity}}%</td>                            
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div class="col-sm-4">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
